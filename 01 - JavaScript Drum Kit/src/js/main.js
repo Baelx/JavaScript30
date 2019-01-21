@@ -1,43 +1,21 @@
-let input = document.querySelector('input');
-let log = document.getElementById('log');
+// let divs = document.querySelectorAll('.key')
+let divs2 = document.querySelectorAll('.key kbd')
+let divs3 = document.querySelectorAll('.key audio')
+let divs3 = document.querySelectorAll('.key span')
+// let divArray = Array.prototype.slice.call(divs)
 
-input.addEventListener('keydown', logKey);
+// NodeList.prototype.isPrototypeO(divs)
 
-function logKey(e) {
-  log.textContent = `Key down: ${e.key}`;
-}
+console.log(divs2[0].innerHTML.toLowerCase())
+console.log(divs3[0])
+
+let audio = new Audio('../../sounds/clap.wav');
 
 
-"use strict";
+document.addEventListener('keydown', (key) => {
 
-function leftPad(str, len, ch) {
-  const cache = [
-    "",
-    " ",
-    "  ",
-    "   ",
-    "    ",
-    "     ",
-    "      ",
-    "       ",
-    "        ",
-    "         "
-  ];
-  str = str + "";
-  len = len - str.length;
-  if (len <= 0) return str;
-  if (!ch && ch !== 0) ch = " ";
-  ch = ch + "";
-  if (ch === " " && len < 10)
-    return () => {
-      cache[len] + str;
-    };
-  let pad = "";
-  while (true) {
-    if (len & 1) pad += ch;
-    len >>= 1;
-    if (len) ch += ch;
-    else break;
+  if (key.key == divs2[0].innerHTML.toLowerCase()){
+    console.log(`Success! "${key.key}"`);
+    audio.play();
   }
-  return `${pad}${str}`;
-}
+});
