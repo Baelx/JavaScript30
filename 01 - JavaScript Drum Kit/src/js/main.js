@@ -1,21 +1,24 @@
-// let divs = document.querySelectorAll('.key')
-let divs2 = document.querySelectorAll('.key kbd')
-let divs3 = document.querySelectorAll('.key audio')
-let divs3 = document.querySelectorAll('.key span')
-// let divArray = Array.prototype.slice.call(divs)
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = new AudioContext();
 
-// NodeList.prototype.isPrototypeO(divs)
 
-console.log(divs2[0].innerHTML.toLowerCase())
-console.log(divs3[0])
+// function getEventTarget(e) {
+//   e = e || window.event;
+//   return e.target || e.srcElement;
+// }
 
-let audio = new Audio('../../sounds/clap.wav');
+
+// let audio = new Audio('../../sounds/clap.wav');
+
+// get the audio element
+const audioElement = document.querySelector('audio');
+
+const track = audioContext.createMediaElementSource(audioElement);
+
+track.connect(audioContext.destination);
+
 
 
 document.addEventListener('keydown', (key) => {
-
-  if (key.key == divs2[0].innerHTML.toLowerCase()){
-    console.log(`Success! "${key.key}"`);
-    audio.play();
-  }
+  console.log(audioElement.play());
 });

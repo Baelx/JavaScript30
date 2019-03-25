@@ -91,9 +91,10 @@
   !*** ./src/js/main.js ***!
   \************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nDuplicate declaration \\\"divs3\\\"\\n\\n\\u001b[0m \\u001b[90m 2 | \\u001b[39mlet divs2 \\u001b[33m=\\u001b[39m document\\u001b[33m.\\u001b[39mquerySelectorAll(\\u001b[32m'.key kbd'\\u001b[39m)\\n \\u001b[90m 3 | \\u001b[39mlet divs3 \\u001b[33m=\\u001b[39m document\\u001b[33m.\\u001b[39mquerySelectorAll(\\u001b[32m'.key audio'\\u001b[39m)\\n\\u001b[31m\\u001b[1m>\\u001b[22m\\u001b[39m\\u001b[90m 4 | \\u001b[39mlet divs3 \\u001b[33m=\\u001b[39m document\\u001b[33m.\\u001b[39mquerySelectorAll(\\u001b[32m'.key span'\\u001b[39m)\\n \\u001b[90m   | \\u001b[39m    \\u001b[31m\\u001b[1m^\\u001b[22m\\u001b[39m\\n \\u001b[90m 5 | \\u001b[39m\\u001b[90m// let divArray = Array.prototype.slice.call(divs)\\u001b[39m\\n \\u001b[90m 6 | \\u001b[39m\\n \\u001b[90m 7 | \\u001b[39m\\u001b[90m// NodeList.prototype.isPrototypeO(divs)\\u001b[39m\\u001b[0m\\n\");\n\n//# sourceURL=webpack:///./src/js/main.js?");
+"use strict";
+eval("\n\nvar AudioContext = window.AudioContext || window.webkitAudioContext;\nvar audioContext = new AudioContext();\n\n// function getEventTarget(e) {\n//   e = e || window.event;\n//   return e.target || e.srcElement;\n// }\n\n\n// let audio = new Audio('../../sounds/clap.wav');\n\n// get the audio element\nvar audioElement = document.querySelector('audio');\n\nvar track = audioContext.createMediaElementSource(audioElement);\n\ntrack.connect(audioContext.destination);\n\ndocument.addEventListener('keydown', function (key) {\n  console.log(audioElement.play());\n});\n\n//# sourceURL=webpack:///./src/js/main.js?");
 
 /***/ })
 
