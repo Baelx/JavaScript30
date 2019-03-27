@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar AudioContext = window.AudioContext || window.webkitAudioContext;\nvar audioContext = new AudioContext();\n\n// function getEventTarget(e) {\n//   e = e || window.event;\n//   return e.target || e.srcElement;\n// }\n\n\n// let audio = new Audio('../../sounds/clap.wav');\n\n// get the audio element\nvar audioElement = document.querySelector('audio');\n\nvar track = audioContext.createMediaElementSource(audioElement);\n\ntrack.connect(audioContext.destination);\n\ndocument.addEventListener('keydown', function (key) {\n  console.log(audioElement.play());\n});\n\n//# sourceURL=webpack:///./src/js/main.js?");
+eval("\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\n//convert to arrays\nvar audioTags = [].concat(_toConsumableArray(document.querySelectorAll('audio')));\nvar keyTags = [].concat(_toConsumableArray(document.querySelectorAll('.key')));\n\nvar clap = audioTags[0];\n\n// functions that follow are using the clap sound only and the A key only\n\nfunction preloadAudio(clap) {\n  clap.preload = 'auto';\n  clap.load();\n};\n\nfunction playSound() {\n  var sound = clap.cloneNode();\n  sound.play();\n}\n\ndocument.addEventListener('keydown', function (key) {\n  if (key.code == \"KeyA\") {\n    playSound();\n    keyTags[0].classList.add('playing');\n  }\n});\ndocument.addEventListener('keyup', function (key) {\n  if (key.code == \"KeyA\") {\n    keyTags[0].classList.remove('playing');\n  }\n});\n\n//# sourceURL=webpack:///./src/js/main.js?");
 
 /***/ })
 

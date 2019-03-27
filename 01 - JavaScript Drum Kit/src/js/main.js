@@ -1,24 +1,32 @@
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioContext = new AudioContext();
+//convert to arrays
+const audioTags = [...document.querySelectorAll('audio')];
+const keyTags = [...document.querySelectorAll('.key')];
 
 
-// function getEventTarget(e) {
-//   e = e || window.event;
-//   return e.target || e.srcElement;
-// }
+const clap = audioTags[0];
 
+// functions that follow are using the clap sound only and the A key only
 
-// let audio = new Audio('../../sounds/clap.wav');
+function preloadAudio(clap) {
+  clap.preload = 'auto';
+  clap.load();
+};
 
-// get the audio element
-const audioElement = document.querySelector('audio');
-
-const track = audioContext.createMediaElementSource(audioElement);
-
-track.connect(audioContext.destination);
-
-
+function playSound() {
+  let sound = clap.cloneNode();
+  sound.play();
+}
 
 document.addEventListener('keydown', (key) => {
-  console.log(audioElement.play());
+  if (key.code == "KeyA") {
+    playSound();
+    keyTags[0].classList.add('playing');
+  }
+
+});
+document.addEventListener('keyup', (key) => {
+  if (key.code == "KeyA") {
+    keyTags[0].classList.remove('playing');
+  }
+
 });
